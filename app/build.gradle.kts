@@ -31,7 +31,7 @@ android {
         minSdk = 24
         targetSdk = 36
         versionCode = 10
-        versionName = "UwU-1.0.0"
+        versionName = System.getenv("RELEASE_TAG")?.trimStart('v') ?: "UwU-1.0.0"
 
         externalNativeBuild {
             cmake {

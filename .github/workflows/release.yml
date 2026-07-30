@@ -59,6 +59,7 @@ jobs:
           KEYSTORE_PASS: ${{ secrets.KEYSTORE_PASS }}
           ALIAS_NAME: ${{ secrets.ALIAS_NAME }}
           ALIAS_PASS: ${{ secrets.ALIAS_PASS }}
+          RELEASE_TAG: ${{ github.ref_name }}
         run: |
           chmod +x gradlew
           ./gradlew :app:assembleRelease --stacktrace --no-daemon
