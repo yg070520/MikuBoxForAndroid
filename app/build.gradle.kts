@@ -21,13 +21,13 @@ fun secret(name: String): String? =
         ?: System.getenv(name)?.takeIf { it.isNotBlank() }
 
 android {
-    namespace = "top.uwu.mikubox"
+    namespace = "top.jatus.miku"
     compileSdk = 36
     buildToolsVersion = "36.1.0"
     ndkVersion = "29.0.13599879"
 
     defaultConfig {
-        applicationId = "top.uwu.mikubox"
+        applicationId = "top.jatus.miku"
         minSdk = 24
         targetSdk = 36
         versionCode = 10

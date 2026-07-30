@@ -1,4 +1,4 @@
-module top.uwu.mikubox/mihomo-bridge
+module top.jatus.miku/mihomo-bridge
 
 // Keep the wrapper's module graph unpruned: Mihomo itself supplies the full
 // dependency graph and is pinned by the submodule.

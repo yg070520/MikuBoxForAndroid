@@ -11,7 +11,7 @@ import androidx.annotation.FloatRange;
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 
-import top.uwu.mikubox.R;
+import top.jatus.miku.R;
 
 import java.util.List;
 import java.util.Random;
