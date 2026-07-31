@@ -57,6 +57,11 @@ jobs:
         run: |
           mkdir -p "$GOPATH/bin"
           echo "$GOPATH/bin" >> "$GITHUB_PATH"
+          export PATH="$GOPATH/bin:$PATH"
+          go install -v github.com/sagernet/gomobile/cmd/gomobile@v0.1.13
+          go install -v github.com/sagernet/gomobile/cmd/gobind@v0.1.13
+          ls -l "$GOPATH/bin" | grep -E 'gomobile|gobind' || true
+          "$GOPATH/bin/gomobile" init
           ./run lib core
 
   build:
