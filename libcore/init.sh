@@ -17,9 +17,10 @@ go mod tidy || exit 1
 # sing-box's own gomobile fork. Upstream golang.org/x/mobile lacks the -libname
 # flag and the binding fixes libbox depends on; sing-box pins this version in
 # its Makefile (lib_install).
+export PATH="$GOPATH/bin:$PATH"
 if [ ! -f "$GOPATH/bin/gomobile" ]; then
-    go install -v github.com/sagernet/gomobile/cmd/gomobile@v0.1.13
-    go install -v github.com/sagernet/gomobile/cmd/gobind@v0.1.13
+    go install -v github.com/sagernet/gomobile/cmd/gomobile@v0.1.12
+    go install -v github.com/sagernet/gomobile/cmd/gobind@v0.1.12
 fi
 
 "$GOPATH"/bin/gomobile init

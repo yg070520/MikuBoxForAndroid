@@ -30,6 +30,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Gather build status
         run: |
@@ -54,14 +56,15 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         env:
           GOPATH: ${{ runner.temp }}/go
+          GOBIN: ${{ runner.temp }}/go/bin
         run: |
-          mkdir -p "$GOPATH/bin"
-          echo "$GOPATH/bin" >> "$GITHUB_PATH"
-          export PATH="$GOPATH/bin:$PATH"
-          go install -v github.com/sagernet/gomobile/cmd/gomobile@v0.1.13
-          go install -v github.com/sagernet/gomobile/cmd/gobind@v0.1.13
-          ls -l "$GOPATH/bin" | grep -E 'gomobile|gobind' || true
-          "$GOPATH/bin/gomobile" init
+          mkdir -p "$GOBIN"
+          echo "$GOBIN" >> "$GITHUB_PATH"
+          export PATH="$GOBIN:$PATH"
+          go install -v github.com/sagernet/gomobile/cmd/gomobile@v0.1.12
+          go install -v github.com/sagernet/gomobile/cmd/gobind@v0.1.12
+          ls -l "$GOBIN" | grep -E 'gomobile|gobind' || true
+          "$GOBIN/gomobile" init
           ./run lib core
 
   build:
@@ -71,6 +74,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - name: Resolve release tag
         id: tag
