@@ -48,11 +48,16 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         uses: actions/setup-go@v5
         with:
-          go-version: ^1.25
+          go-version: "1.25"
 
       - name: Native Build
         if: steps.cache.outputs.cache-hit != 'true'
-        run: ./run lib core
+        env:
+          GOPATH: ${{ runner.temp }}/go
+        run: |
+          mkdir -p "$GOPATH/bin"
+          echo "$GOPATH/bin" >> "$GITHUB_PATH"
+          ./run lib core
 
   build:
     name: Build MikuBox APK
